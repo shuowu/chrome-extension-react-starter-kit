@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome extension auto reload</title>
+</head>
+<body>
+  <h1>Chrome extension auto reload helper</h1>
+  <div style="color:red">Keep this page open during development</div>
+  <div id="notification" style="color:red"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var extensionId = '%YOUR_UNPACKED_EXTENSION_ID%'
+      if (extensionId === '%YOUR_UNPACKED_EXTENSION_ID%') {
+        document.getElementById('notification').innerHTML = 'Please replace the extensionId placeholder in \'./src/dev/index.html\' with your extensionId'
+      }
+      const message = { action: 'reload' }
+      chrome.runtime.sendMessage(extensionId, message)
+    }, false);
+  </script>
+</body>
+</html>
