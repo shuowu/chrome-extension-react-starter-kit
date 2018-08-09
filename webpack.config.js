@@ -9,6 +9,7 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
+    https: true, // enable https to get rid of ws connection failures from injected https pages
     port: 4000,
   },
   module: {
