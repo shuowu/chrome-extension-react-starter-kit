@@ -1,5 +1,5 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: {
@@ -9,8 +9,10 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
+    hot: true,
     https: true, // enable https to get rid of ws connection failures from injected https pages
     port: 4000,
+    clientLogLevel: 'none',
   },
   module: {
     rules: [
@@ -22,10 +24,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/dev/index.html",
-      filename: "./index.html"
-    }),
     new WriteFilePlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }

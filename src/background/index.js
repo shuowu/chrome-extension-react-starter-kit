@@ -9,9 +9,13 @@ chrome.runtime.onInstalled.addListener(() => {
   })
 })
 
-chrome.runtime.onMessageExternal.addListener(req => {
-  const { action } = req
-  if (action === 'reload') {
-    chrome.runtime.reload()
-  }
-})
+window.addEventListener(
+  'message',
+  msg => {
+    const { data } = msg
+    if (data && JSON.stringify(data).indexOf('webpackHotUpdate') > -1) {
+      chrome.runtime.reload()
+    }
+  },
+  false
+)
