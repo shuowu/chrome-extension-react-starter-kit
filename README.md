@@ -15,15 +15,9 @@ The content script will display a fixed top header in red background color for a
 1. `$ yarn install`
 2. `$ yarn start` to start webpack dev server
 3. Load unpacked extension: Open chrome browser -> chrome://extensions -> Load unpacked
-4. Replace `%YOUR_UNPACKED_EXTENSION_ID%` in `./src/dev/index.html` with the new loaded extensionId
 5. Change code in `./src/background`, `./src/content-script`, `./src/popup` based on your business logic
-6. The webpack dev server is configable in webpack.config.js
-
-## For production
-For production build, you probably want to change the manifest.json, such as: 
-1. Remove "externally_connectable" (this field is be added for extension auto reload)
-2. Change the sourcemap config
-3. exclude unnecesssary dev code
+6. The webpack dev server is configable in webpack.{env}.config.js
+7. `$ yarn build` to build production code
 
 ## License
 MIT
