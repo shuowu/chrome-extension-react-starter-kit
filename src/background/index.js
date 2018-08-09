@@ -1,9 +1,9 @@
+/* DEV-START */
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('installed')
   chrome.tabs.query({ active: true }, tabs => {
     const tab = tabs[0]
-    const { id, url } = tab
-    if (id && url.indexOf('localhost') === -1) {
+    const { id } = tab
+    if (id) {
       chrome.tabs.reload(id)
     }
   })
@@ -19,3 +19,4 @@ window.addEventListener(
   },
   false
 )
+/* DEV-END */
